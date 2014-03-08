@@ -18,15 +18,17 @@ int main(void) {
     // pin1 (debug LED) set to output
     DDRB = (1<<DDB1); 
 
-    charlieOn(1,2);
-//     while (1) {
-//         for ( uint8_t x = 0; x < 5; x++ ) {
-//             for ( uint8_t y = 0; y < 5; y++ ) {
-//                 if ( x != y ) {
-//                     charlieOn(x,y);
-//                     _delay_ms(300);
-//                 }
-//             }
-//         }
-//     }
+//     charlieOn(1,2);
+    uint8_t l;
+    while (1) {
+        ++l;
+        for ( uint8_t x = 0; x < 5; x++ ) {
+            for ( uint8_t y = 0; y < 5; y++ ) {
+                if ( x != y && (l + x + y) % 2 ) {
+                    charlieOn(x,y);
+                    _delay_ms(10);
+                }
+            }
+        }
+    }
 }
